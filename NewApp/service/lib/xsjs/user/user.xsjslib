@@ -1,11 +1,6 @@
 var user = function (connection) {
 
     const USER_TABLE = "NewApp::User";
-    /*
-            const USER = $.session.securityContext.userInfo.familyName ?
-                $.session.securityContext.userInfo.familyName + " " + $.session.securityContext.userInfo.givenName :
-                $.session.getUsername().toLocaleLowerCase(),
-    */
 
     this.doGet = function (obj) {
         const result = connection.executeQuery('SELECT * FROM "NewApp::User"');
@@ -37,7 +32,6 @@ var user = function (connection) {
       $.response.status = $.net.http.CREATED;
       $.response.setBody(JSON.stringify(obj));
     };
-
 
     this.doDelete = function (rowID) {
         const statement = createPreparedDeleteStatement(USER_TABLE, rowID);
