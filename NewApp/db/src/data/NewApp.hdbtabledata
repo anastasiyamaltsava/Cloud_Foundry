@@ -1,0 +1,50 @@
+{
+  "format_version": 1,
+  "imports": [
+    {
+      "target_table": "NewApp::User",
+      "source_data": {
+        "data_type": "CSV",
+        "file_name": "NewApp::Users.csv",
+        "has_header": true
+      },
+      "import_settings": {
+        "import_columns": [
+          "usid",
+          "name"
+        ]
+      }
+    },
+    {
+      "target_table": "NewApp::ExtraInfo.Address",
+      "source_data": {
+        "data_type": "CSV",
+        "file_name": "NewApp::Address.csv",
+        "has_header": true
+      },
+      "import_settings": {
+        "import_columns": [
+					"usid",
+					"city",
+					"strt",
+					"hnum"
+        ]
+      }
+    },
+    {
+      "target_table": "NewApp::ExtraInfo.Cars",
+      "source_data": {
+        "data_type": "CSV",
+        "file_name": "NewApp::Cars.csv",
+        "has_header": true
+      },
+      "import_settings": {
+        "import_columns": [
+					"crid",
+          "usid",
+          "name"
+        ]
+      }
+    }
+  ]
+}
