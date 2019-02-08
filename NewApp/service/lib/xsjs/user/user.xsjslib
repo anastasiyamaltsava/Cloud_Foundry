@@ -13,7 +13,7 @@ var user = function (connection) {
 
     this.doPost = function (oUser) {
 
-        oUser.usid = getNextval("NewApp::usid");
+        oUser.usid = this.getNextval("NewApp::usid");
 
         const statement = createPreparedInsertStatement(USER_TABLE, oUser);
         connection.executeUpdate(statement.sql, statement.aValues);
