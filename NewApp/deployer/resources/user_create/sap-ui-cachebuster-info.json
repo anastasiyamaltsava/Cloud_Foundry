@@ -1,15 +1,12 @@
 {
-  "Component-dbg.js": 1549895207216,
-  "Component-preload.js": 1549895207261,
+  "Component-dbg.js": 1549897025183,
+  "Component-preload.js": 1549897025378,
   "Component.js": 1548836128000,
-  "controller/App-dbg.controller.js": 1549895207222,
-  "controller/App.controller.js": 1549446378000,
-  "di.code-validation.core_issues.json": 1549895206773,
+  "di.code-validation.core_issues.json": 1549897024419,
   "fragment/ConfirmDeleteDialog.fragment.xml": 1544182244000,
   "index.html": 1549544418785,
-  "manifest-bundle.zip": 1549895207484,
-  "manifest.json": 1549895033398,
-  "resources.json": 1549895207396,
-  "view/App.view.xml": 1549449570000,
+  "manifest-bundle.zip": 1549897025639,
+  "manifest.json": 1549896904475,
+  "resources.json": 1549897025536,
   "xs-app.json": 1549793983017
 }
