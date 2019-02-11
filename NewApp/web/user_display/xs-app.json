@@ -6,7 +6,11 @@
       "source": "^(.*)$",
       "target": "$1",
       "service": "html5-apps-repo-rt",
-      "authenticationType": "xsuaa"
+      "csrfProtection":true,
+      "authenticationType": "xsuaa",
+      "scope":{
+            "default":"$XSAPPNAME.himta.view"
+         }
     }
   ]
 }

@@ -12,9 +12,27 @@
 		"sourceTemplate": {
 			"id": "html5moduletemplates.basicSAPUI5ApplicationProjectModule",
 			"version": "1.40.12"
-		}
+		},
+		"crossNavigation": {
+      "inbounds": {
+        "intent1": {
+          "signature": {
+            "parameters": {},
+            "additionalParameters": "allowed"
+          },
+					"hideLauncher" :true,
+          "semanticObject": "user_create",
+          "action": "manage"
+        }
+      }
+    }
 	},
-
+	"sap.platform.cf": {
+    "oAuthScopes": [
+      "NewApp!t10685.newapp.view",
+      "NewApp!t10685.newapp.edit"
+    ]
+  },
 	"sap.ui": {
 		"technology": "UI5",
 		"icons": {

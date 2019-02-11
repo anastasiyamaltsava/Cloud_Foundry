@@ -63,6 +63,7 @@ modules:
             - {name: pt_conn}
             - {name: pt_uaa}
             - {name: pt_router}
+            # - {name: pt_portal}
             - {name: pt_service, group: destinations, properties: {name: pt_service, url: '~{url}'}}
     -
         name: deployer
@@ -75,7 +76,26 @@ modules:
         parameters:
             disk-quota: 256M
             memory: 128M
+    # -
+    #     name: flp
+    #     type: com.sap.portal.site-content
+    #     path: flp
+    #     parameters:
+    #         stack: cflinuxfs3
+    #         memory: 128M
+    #         buildpack: 'https://github.com/cloudfoundry/nodejs-buildpack/releases/download/v1.6.21/nodejs-buildpack-v1.6.21.zip'
+    #     requires:
+    #         - {name: pt_portal}
+    #         - {name: pt_uaa}
+    #         - {name: pt_deployer}
+    #         - {name: deployer}
 resources:
+    # -
+    #     name: pt_portal
+    #     parameters:
+    #         service-plan: standart
+    #         service: pt_portal
+    #     type: org.cloudfoundry.managed-service
     -
         name: pt_uaa
         parameters:
