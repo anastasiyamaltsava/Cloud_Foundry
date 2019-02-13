@@ -2,7 +2,6 @@
   "authenticationMethod": "route",
   "routes": [
     {
-    {
       "source": "/api/(.*)",
       "target": "$1",
       "destination": "javarest",

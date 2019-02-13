@@ -1,0 +1,12 @@
+namespace javaCFMTA;
+
+using javaCFMTA::ExtraInfo.Shops;
+
+entity Flower {
+    @Comment: 'Id of Flower'
+    key flid :  Integer64 generated always as identity ( start with 1 increment by 1 );
+    @Comment: 'Name of flower'
+    name : String(100);
+
+    toShops : Association[*] to Shops on toShops.flid = flid;
+};
