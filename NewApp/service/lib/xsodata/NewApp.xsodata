@@ -1,28 +1,20 @@
 service namespace "NewApp"{
 
-    "NewApp::User" as "Users"
-                navigates("Users_2_Address" as "toAddress", "Users_2_Cars" as "toCars")
-            create using "xsjs.user:usersCreate.xsjslib::usersCreate"
-            update using "xsjs.user:usersUpdate.xsjslib::usersUpdate"
+    "NewApp::Flower" as "Flowers"
+                navigates("Flowers_2_Shops" as "toShops")
+            create using "xsjs.flower:flowersCreate.xsjslib::flowersCreate"
+            update using "xsjs.flower:flowersUpdate.xsjslib::flowersUpdate"
             delete forbidden;
 
-    "NewApp::ExtraInfo.Address" as "Address"
+    "NewApp::ExtraInfo.Shops" as "Shops"
+                navigates("Shops_2_Flower" as "toFlower")
             create forbidden
             update forbidden
             delete forbidden;
 
-    "NewApp::ExtraInfo.Cars" as "Cars"
-                navigates("Cars_2_User" as "toUser")
-            create forbidden
-            update forbidden
-            delete forbidden;
+    association "Flowers_2_Shops" principal "Flowers"("flid")
+            multiplicity "*" dependent "Shops"("flid") multiplicity "*";
 
-    association "Users_2_Address" principal "Users"("usid")
-            multiplicity "1" dependent "Address"("usid") multiplicity "1";
-
-    association "Users_2_Cars" principal "Users"("usid")
-            multiplicity "1" dependent "Cars"("usid") multiplicity "*";
-
-    association "Cars_2_User" principal "Cars"("usid")
-            multiplicity "1" dependent "Users"("usid") multiplicity "1";
+    association "Shops_2_Flower" principal "Shops"(flid")
+            multiplicity "*" dependent "Flowers"("flid") multiplicity "*";
 }

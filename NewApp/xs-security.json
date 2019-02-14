@@ -9,11 +9,11 @@
     },
     {
       "name": "$XSAPPNAME.newapp.view",
-      "description": "Display users"
+      "description": "Display flowers"
     },
     {
       "name": "$XSAPPNAME.newapp.create",
-      "description": "Create users"
+      "description": "Create flower"
     }
   ],
   "attributes": [

@@ -17,12 +17,12 @@
         "payload": {
           "appDescriptors": [
             {
-              "id": "user_create",
-              "intentHintId": "user_create-manage"
+              "id": "flower_create",
+              "intentHintId": "flower_create-manage"
             },
             {
-              "id": "user_display",
-              "intentHintId": "user_display-display"
+              "id": "flower_display",
+              "intentHintId": "flower_display-display"
             }
           ]
         }
@@ -40,14 +40,14 @@
         "payload": {
           "tiles": [
             {
-              "id": "user_create-0-1547743524700",
-              "appId": "user_create",
-              "intentHintId": "user_create-manage"
+              "id": "flower_create-0-1547743524700",
+              "appId": "flower_create",
+              "intentHintId": "flower_create-manage"
             },
             {
-              "id": "user_display-1-1547743524700",
-              "appId": "user_display",
-              "intentHintId": "user_display-display"
+              "id": "flower_display-1-1547743524700",
+              "appId": "flower_display",
+              "intentHintId": "flower_display-display"
             }
           ]
         }
