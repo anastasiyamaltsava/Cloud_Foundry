@@ -1,9 +1,10 @@
 var user = function (connection) {
 
     const USER_TABLE = "NewApp::User";
+    const USER_ID = "NewApp::usid";
 
     this.doGet = function (obj) {
-        const result = connection.executeQuery('SELECT * FROM "NewApp::User"');
+        const result = connection.executeQuery('SELECT * FROM "${USER_TABLE}"');
 
         result.forEach(x => $.trace.error(JSON.stringify(x)));
 
@@ -13,7 +14,7 @@ var user = function (connection) {
 
     this.doPost = function (oUser) {
 
-        oUser.usid = this.getNextval("NewApp::usid");
+        oUser.usid = this.getNextval(USER_ID);
 
         const statement = createPreparedInsertStatement(USER_TABLE, oUser);
         connection.executeUpdate(statement.sql, statement.aValues);
@@ -29,7 +30,7 @@ var user = function (connection) {
       connection.executeUpdate(statement.sql, statement.aValues);
 
       connection.commit();
-      $.response.status = $.net.http.CREATED;
+      $.response.status = $.net.http.OK;
       $.response.setBody(JSON.stringify(obj));
     };
 
@@ -43,7 +44,7 @@ var user = function (connection) {
     };
 
     function getNextval(sSeqName) {
-        const statement = `select "${sSeqName}".NEXTVAL as "ID" from dummy`;
+        const statement = `select "${sSeqName}".NEXTVAL as "ID" from "${USER_TABLE}"`;
         const result = connection.executeQuery(statement);
 
         if (result.length > 0) {
@@ -54,23 +55,16 @@ var user = function (connection) {
     }
 
     function createPreparedInsertStatement(sTableName, oValueObject) {
-      let oResult = {
-            aParams: [],
-            aValues: [],
-            sql: "",
-        };
+      let oResult = new Result();
 
         let sColumnList = '', sValueList = '';
 
-        Object.keys(oValueObject).forEach(value => {
-            sColumnList += `"${value}",`;
-            oResult.aParams.push(value);
-        });
-
-        Object.values(oValueObject).forEach(value => {
+        for(let key in oValueObject){
+            sColumnList += `"${key}",`;
+            oResult.aParams.push(key);
             sValueList += "?, ";
-            oResult.aValues.push(value);
-        });
+            oResult.aValues.push(oValueObject[key]);            
+        }
 
         $.trace.error("svalue " + sValueList);
         $.trace.error("scolumn: " + sColumnList);
@@ -86,23 +80,16 @@ var user = function (connection) {
     };
 
     function createPreparedUpdateStatement(sTableName, oValueObject) {
-        let oResult = {
-            aParams: [],
-            aValues: [],
-            sql: "",
-        };
+        let oResult = new Result();
 
         let sColumnList = '', sValueList = '';
 
-        Object.keys(oValueObject).forEach(value => {
-            sColumnList += `"${value}",`;
-            oResult.aParams.push(value);
-        });
-
-        Object.values(oValueObject).forEach(value => {
+        for(let key in oValueObject){
+            sColumnList += `"${key}",`;
+            oResult.aParams.push(key);
             sValueList += "?, ";
-            oResult.aValues.push(value);
-        });
+            oResult.aValues.push(oValueObject[key]);            
+        }
 
         $.trace.error("svalue " + sValueList);
         $.trace.error("scolumn: " + sColumnList);
@@ -117,15 +104,17 @@ var user = function (connection) {
     };
 
     function createPreparedDeleteStatement(sTableName, rowID) {
-        let oResult = {
-            aParams: [],
-            aValues: [],
-            sql: "",
-        };
+        let oResult = new Result();
 
         oResult.sql = `DELETE FROM "${sTableName}" WHERE "usid"=${rowID};`;
 
         $.trace.error("sql to delete: " + oResult.sql);
         return oResult;
+    };
+    
+    function Result() {
+        this.aParams = [];
+        this.aValues = [];
+        this.sql = "";
     };
 };
