@@ -5,27 +5,26 @@ const SetToJSON = $.import('xsjs.user', 'setToJSON').setToJSON;
 const setToJSON = new SetToJSON();
 
 function usersCreate(param){
-    $.trace.error(JSON.stringify(param));
-    var after = param.afterTableName;
+	$.trace.error(JSON.stringify(param));
+	var after = param.afterTableName;
 
-    //Get Input New Record Values
-    var	pStmt = param.connection.prepareStatement("select * from \"" + after + "\"");
-    var oResult = pStmt.executeQuery();
+    	//Get Input New Record Values
+    	var	pStmt = param.connection.prepareStatement("select * from \"" + after + "\"");
+    	var oResult = pStmt.executeQuery();
 
-    var oUserItems = setToJSON.recordSetToJSON(oResult, "items");
-    var oUser = oUserItems.items[0];
-    $.trace.error(JSON.stringify(oUser));
+    	var oUserItems = setToJSON.recordSetToJSON(oResult, "items");
+    	var oUser = oUserItems.items[0];
+    	$.trace.error(JSON.stringify(oUser));
 
-    //TODO now HERE you have oUser object. Similar to xsjs/lib/user/user.xsjslib method doPost line 13
+    	//TODO now HERE you have oUser object. Similar to xsjs/lib/user/user.xsjslib method doPost line 13
 
-	pStmt = param.connection.prepareStatement('select \"${USER_ID}\".NEXTVAL from dummy');
-	var result = pStmt.executeQuery();
+    	pStmt = param.connection.prepareStatement('select \"${USER_ID}\".NEXTVAL from dummy');
+    	var result = pStmt.executeQuery();
 
-    while (result.next()) {
+    	while (result.next()) {
 		oUser.id = result.getString(1);
 	}
-
-    $.trace.error(JSON.stringify(oUser));
+	$.trace.error(JSON.stringify(oUser));
 	pStmt.close();
 	//Insert Record into DB Table and Temp Output Table
 	pStmt = param.connection.prepareStatement(`insert into \"${USER_TABLE}\" values(?,?)`);
@@ -42,12 +41,4 @@ function Execute(pStmt, oUser) {
 	pStmt.setString(2, oUser.name.toString());		
 	pStmt.executeUpdate();
 	pStmt.close();	
-}
-
-        return input;
-    }
-    else{
-
-        return "";
-    }
 }
