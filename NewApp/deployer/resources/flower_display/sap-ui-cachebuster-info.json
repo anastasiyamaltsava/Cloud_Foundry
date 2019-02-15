@@ -1,11 +1,17 @@
 {
-  "Component-dbg.js": 1550150788342,
-  "Component-preload.js": 1550150788375,
+  "Component-dbg.js": 1550230152872,
+  "Component-preload.js": 1550230152892,
   "Component.js": 1550145493627,
-  "di.code-validation.core_issues.json": 1550150787741,
-  "index.html": 1550145498478,
-  "manifest-bundle.zip": 1550150788531,
+  "controller/App-dbg.controller.js": 1550230152875,
+  "controller/App.controller.js": 1550228154892,
+  "di.code-validation.core_issues.json": 1550230152621,
+  "i18n/i18n.properties": 1550228135301,
+  "index-dbg.js": 1550230152877,
+  "index.html": 1548759354808,
+  "index.js": 1550229051114,
+  "manifest-bundle.zip": 1550230152998,
   "manifest.json": 1550145502726,
-  "resources.json": 1550150788430,
+  "resources.json": 1550230152943,
+  "view/App.view.xml": 1550230050355,
   "xs-app.json": 1550145040961
 }

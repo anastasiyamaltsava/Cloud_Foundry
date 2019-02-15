@@ -1,0 +1,35 @@
+<mvc:View
+    controllerName="sap.ui.demo.db.controller.App"
+	xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+	xmlns:mvc="sap.ui.core.mvc">
+    <Panel headerText="{i18n>header}" class="sapUiResponsiveMargin" width="auto">
+		<content>
+            <Table
+                id="flowerList"
+                class="sapUiResponsiveMargin"
+                width="auto"
+                items="{path : 'flower>/value'}"
+                >
+                    <columns>
+                            <Column>
+                                <Text text="{i18n>id}"/>
+                            </Column>
+                            <Column
+                                minScreenWidth="Small"
+                                demandPopin="true">
+                                <Text text="{i18n>name}"/>
+                            </Column>
+                    </columns>
+                    <items>
+                        <ColumnListItem>
+                            <cells>
+                                <Text text="{flower>flid}"/>
+                                <Text text="{flower>name}"/>
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+            </Table>
+		</content>
+	</Panel>
+</mvc:View>

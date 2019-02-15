@@ -4,7 +4,7 @@ var flower = function (connection) {
     const FLOWER_ID = "NewApp::flid";
 
     this.doGet = function (obj) {
-        const result = connection.executeQuery('SELECT * FROM "${FLOWER_TABLE}"');
+        const result = connection.executeQuery('SELECT * FROM "' + FLOWER_TABLE + '"');
 
         result.forEach(x => $.trace.error(JSON.stringify(x)));
 
