@@ -51,6 +51,17 @@ modules:
         requires:
             - {name: pt_uaa}
     -
+        name: mainPage
+        type: html5
+        path: web/mainPage
+        parameters:
+            disk-quota: 256M
+            memory: 256M
+        build-parameters:
+            builder: grunt
+        requires:
+            - {name: pt_uaa}
+    -
         name: router
         type: nodejs
         path: router
@@ -73,7 +84,7 @@ modules:
         requires:
             - {name: pt_deployer}
         build-parameters:
-            requires: [{name: flower_create, artifacts: ['./*'], target-path: resources/flower_create},{name: flower_display, artifacts: ['./*'], target-path: resources/flower_display}]
+            requires: [{name: flower_create, artifacts: ['./*'], target-path: resources/flower_create},{name: flower_display, artifacts: ['./*'], target-path: resources/flower_display},{name: mainPage, artifacts: ['./*'], target-path: resources/mainPage}]
         parameters:
             disk-quota: 256M
             memory: 128M

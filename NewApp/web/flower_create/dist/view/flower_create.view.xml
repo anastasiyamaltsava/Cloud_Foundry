@@ -1,0 +1,13 @@
+<mvc:View
+
+	xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+	xmlns:mvc="sap.ui.core.mvc">
+    <Panel headerText="{i18n>header}" class="sapUiResponsiveMargin" width="auto">
+		<content>
+					<Label text="{i18n>name}" id="Label2"/>
+					<Input width="100%"  id="input_name" enabled="true"/>
+                    <Button text="{i18n>create}" press=".createFlower"></Button>
+		</content>
+	</Panel>
+</mvc:View>

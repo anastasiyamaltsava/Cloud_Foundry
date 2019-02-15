@@ -1,23 +1,23 @@
-// sap.ui.define([
-// 	"sap/ui/core/UIComponent",
-// 	"sap/ui/Device",
-// ], function (UIComponent, Device) {
-// 	"use strict";
+sap.ui.define([
+	"sap/ui/core/UIComponent"
+], function (UIComponent) {
+	"use strict";
 
-// 	return UIComponent.extend("flower_create.Component", {
+	return UIComponent.extend("flower_create.Component", {
+		
+		metadata: {
+			manifest: "json"
+		},
 
-// 		metadata: {
-// 			manifest: "json"
-// 		},
-
-// 		/**
-// 		 * The component is initialized by UI5 automatically during the startup of the app and calls the init method once.
-// 		 * @public
-// 		 * @override
-// 		 */
-// 		init: function () {
-// 			// call the base component's init function
-// 			UIComponent.prototype.init.apply(this, arguments);
-// 		}
-// 	});
-// });
+		/**
+		 * The component is initialized by UI5 automatically during the startup of the app and calls the init method once.
+		 * @public
+		 * @override
+		 */
+		init: function () {
+			// call the base component's init function
+			UIComponent.prototype.init.apply(this, arguments);
+			console.log("component init");
+		}
+	});
+});

@@ -22,7 +22,7 @@
                "$XSAPPNAME.newapp.edit"
             ],
             "default":"$XSAPPNAME.newapp.view"
-         }
+      }
     }
   ]
 }

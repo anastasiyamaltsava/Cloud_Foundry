@@ -12,15 +12,11 @@
             "name": "Component.js"
         },
         {
-            "name": "controller\\App-dbg-dbg.controller.js",
+            "name": "controller\\flower_create-dbg.controller.js",
             "isDebug": true
         },
         {
-            "name": "controller\\App-dbg.controller.js",
-            "isDebug": true
-        },
-        {
-            "name": "controller\\App.controller.js"
+            "name": "controller\\flower_create.controller.js"
         },
         {
             "name": "di.code-validation.core_issues.json"
@@ -33,14 +29,7 @@
             "raw": "i18n\\i18n.properties"
         },
         {
-            "name": "index-dbg.js",
-            "isDebug": true
-        },
-        {
             "name": "index.html"
-        },
-        {
-            "name": "index.js"
         },
         {
             "name": "manifest.json"
@@ -53,11 +42,7 @@
             "name": "tmp\\Component.js"
         },
         {
-            "name": "tmp\\controller\\App-dbg.controller.js",
-            "isDebug": true
-        },
-        {
-            "name": "tmp\\controller\\App.controller.js"
+            "name": "tmp\\controller\\flower_create.controller.js"
         },
         {
             "name": "tmp\\fragment\\ConfirmDeleteDialog.fragment.xml"
@@ -70,29 +55,19 @@
             "name": "tmp\\index.html"
         },
         {
-            "name": "tmp\\index.js"
-        },
-        {
             "name": "tmp\\manifest.json"
         },
         {
-            "name": "tmp\\view\\App.view.xml"
+            "name": "tmp\\view\\flower_create.view.xml"
         },
         {
             "name": "tmp-dbg\\Component.js"
         },
         {
-            "name": "tmp-dbg\\controller\\App-dbg.controller.js",
-            "isDebug": true
+            "name": "tmp-dbg\\controller\\flower_create.controller.js"
         },
         {
-            "name": "tmp-dbg\\controller\\App.controller.js"
-        },
-        {
-            "name": "tmp-dbg\\index.js"
-        },
-        {
-            "name": "view\\App.view.xml"
+            "name": "view\\flower_create.view.xml"
         },
         {
             "name": "xs-app.json"

@@ -1,7 +1,6 @@
 sap.ui.define([
-	"sap/ui/core/UIComponent",
-	"sap/ui/Device",
-], function (UIComponent, Device) {
+	"sap/ui/core/UIComponent"	
+], function (UIComponent) {
 	"use strict";
 
 	return UIComponent.extend("flower_display.Component", {
@@ -17,7 +16,8 @@ sap.ui.define([
 		 */
 		init: function () {
 			// call the base component's init function
-			UIComponent.prototype.init.apply(this, arguments);
+			console.log("component init");
+			UIComponent.prototype.init.apply(this, arguments);			
 		}
 	});
 });

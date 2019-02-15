@@ -3,7 +3,7 @@ service namespace "NewApp"{
     "NewApp::Flower" as "Flowers"
                 navigates("Flowers_2_Shops" as "toShops")
             create using "xsjs.flower:flowersCreate.xsjslib::flowersCreate"
-            update using "xsjs.flower:flowersUpdate.xsjslib::flowersUpdate"
+            update using "xsjs.flower:flowersCreate.xsjslib::flowersCreate"
             delete forbidden;
 
     "NewApp::ExtraInfo.Shops" as "Shops"
@@ -13,8 +13,8 @@ service namespace "NewApp"{
             delete forbidden;
 
     association "Flowers_2_Shops" principal "Flowers"("flid")
-            multiplicity "*" dependent "Shops"("flid") multiplicity "*";
+            multiplicity "1" dependent "Shops"("flid") multiplicity "*";
 
-    association "Shops_2_Flower" principal "Shops"(flid")
-            multiplicity "*" dependent "Flowers"("flid") multiplicity "*";
+    association "Shops_2_Flower" principal "Shops"("flid")
+            multiplicity "1" dependent "Flowers"("flid") multiplicity "*";
 }
