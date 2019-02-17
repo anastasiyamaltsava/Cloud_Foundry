@@ -18,7 +18,7 @@ function flowersCreate(param){
 
     	//TODO now HERE you have oFlower object. Similar to xsjs/lib/flower/flower.xsjslib method doPost line 13
 
-    	pStmt = param.connection.prepareStatement('select \"${FLOWER_ID}\".NEXTVAL from dummy');
+    	pStmt = param.connection.prepareStatement(`select \"${FLOWER_ID}\".NEXTVAL from dummy`);
     	var result = pStmt.executeQuery();
 
     	while (result.next()) {

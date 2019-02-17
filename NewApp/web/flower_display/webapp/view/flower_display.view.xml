@@ -5,6 +5,14 @@
 				title="Flower display">
 				<Panel class="sapUiResponsiveMargin" width="auto">
 					<content>
+					<Label text="{i18n>id}" id="Label1"/>
+					<Input width="100%"  id="input_id" enabled="true"/>
+					<Label text="{i18n>name}" id="Label2"/>
+					<Input width="100%"  id="input_name" enabled="true"/>
+                    <Button text="{i18n>create}" press=".createFlower"></Button>
+					<Button text="{i18n>update}" press=".updateFlower"></Button>
+					</content>
+					<content>
 						<Table id="flowerList" items="{
 										path: 'flowers>/Flowers'
 									}">

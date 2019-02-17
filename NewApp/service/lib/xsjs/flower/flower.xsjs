@@ -7,10 +7,6 @@ const flowerLib = new Flowerlib($.hdb.getConnection({
     (function handleRequest() {
         try {
             switch ($.request.method) {
-                case $.net.http.GET : {
-                    flowerLib.doGet();
-                    break;
-                }
                 case $.net.http.PUT : {
                     flowerLib.doPut(JSON.parse($.request.body.asString()));
                     break;
@@ -21,6 +17,10 @@ const flowerLib = new Flowerlib($.hdb.getConnection({
                 }
                 case $.net.http.DEL : {
                     flowerLib.doDelete($.request.parameters.get("flowerid"));
+                    break;
+                }
+                case $.net.http.GET : {
+                    flowerLib.doGet();
                     break;
                 }
                 default: {

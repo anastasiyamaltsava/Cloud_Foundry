@@ -3,7 +3,7 @@ service namespace "NewApp"{
     "NewApp::Flower" as "Flowers"
                 navigates("Flowers_2_Shops" as "toShops")
             create using "xsjs.flower:flowersCreate.xsjslib::flowersCreate"
-            update using "xsjs.flower:flowersCreate.xsjslib::flowersCreate"
+            update using "xsjs.flower:flowersUpdate.xsjslib::flowersUpdate"
             delete forbidden;
 
     "NewApp::ExtraInfo.Shops" as "Shops"
