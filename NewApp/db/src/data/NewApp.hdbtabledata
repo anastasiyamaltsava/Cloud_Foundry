@@ -11,7 +11,9 @@
       "import_settings": {
         "import_columns": [
           "flid",
-          "name"
+          "name",
+          "ts_update",
+          "ts_create"
         ]
       }
     },

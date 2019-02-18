@@ -7,7 +7,7 @@ var xsenv = require("@sap/xsenv");
 var port  = process.env.PORT || 3000;
 
 var options = {
-  	// anonymous : true, // remove to authenticate calls
+  	anonymous : true, // remove to authenticate calls
     redirectUrl : "/index.xsjs"
 };
 
@@ -19,11 +19,11 @@ try {
 }
 
 // configure UAA.  Our uaa is pt_uaa
-try {
-    options = Object.assign(options, xsenv.getServices({ uaa: "pt_uaa" }));
-} catch (err) {
-    console.log("[ERROR]", err.message);
-}
+// try {
+//     options = Object.assign(options, xsenv.getServices({ uaa: "pt_uaa" }));
+// } catch (err) {
+//     console.log("[ERROR]", err.message);
+// }
 
 // start server
 xsjs(options).listen(port);

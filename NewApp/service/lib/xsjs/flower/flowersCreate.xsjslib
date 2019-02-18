@@ -27,18 +27,20 @@ function flowersCreate(param){
 	$.trace.error(JSON.stringify(oFlower));
 	pStmt.close();
 	//Insert Record into DB Table and Temp Output Table
-	pStmt = param.connection.prepareStatement(`insert into \"${FLOWER_TABLE}\" values(?,?)`);
+	pStmt = param.connection.prepareStatement(`insert into \"${FLOWER_TABLE}\" values(?,?,?,?)`);
 	Execute(pStmt, oFlower);
 	pStmt = param.connection.prepareStatement("TRUNCATE TABLE \"" + after + "\"" );
 	pStmt.executeUpdate();
 	pStmt.close();
-	pStmt = param.connection.prepareStatement("insert into \"" + after + "\" values(?,?)" );
+	pStmt = param.connection.prepareStatement("insert into \"" + after + "\" values(?,?,?,?)" );
 	Execute(pStmt, oFlower);
 }
 
 function Execute(pStmt, oFlower) {
 	pStmt.setString(1, oFlower.id.toString());
-	pStmt.setString(2, oFlower.name.toString());		
+	pStmt.setString(2, oFlower.name.toString());
+	pStmt.setTimestamp(3, (new Date()).toISOString());
+  pStmt.setTimestamp(4, (new Date()).toISOString());
 	pStmt.executeUpdate();
-	pStmt.close();	
+	pStmt.close();
 }

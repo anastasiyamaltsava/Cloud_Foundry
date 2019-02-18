@@ -10,7 +10,6 @@ sap.ui.define([
 		},
 		createFlower: function () {
 			var Name = sap.ui.getCore().byId(this.getView().sId + "--input_name").getValue();
-			// var list = sap.ui.getCore().byId(this.getView().sId + "--flowerList");
 			console.log(Name);
 
 			var settings = {
@@ -29,12 +28,11 @@ sap.ui.define([
 				console.log(response);
 			});
 
-			// list.getModel().updateBindings();
+			window.location.reload();
 		},
 		updateFlower: function () {
 			var Name = sap.ui.getCore().byId(this.getView().sId + "--input_name").getValue();
 			var Id = sap.ui.getCore().byId(this.getView().sId + "--input_id").getValue();
-			// var list = sap.ui.getCore().byId(this.getView().sId + "--flowerList");
 
 			console.log(Name);
 
@@ -47,14 +45,14 @@ sap.ui.define([
 					"content-type": "application/json"
 				},
 				"processData": false,
-				"data": "{\"name\": \"" + Name  + "\"}"
+				"data": "{\"name\": \"" + Name  + "\", \"ts_update\": null,  \"ts_create\": null}"
 			};
 
 			$.ajax(settings).done(function (response) {
 				console.log(response);
 			});
 
-			// list.getModel().updateBindings();
+			window.location.reload();
 
 		}
      });

@@ -22,7 +22,13 @@
 									</Column>
 								<Column id="nameColumn">
 									<Text text="{name}" />
-								</Column>												
+								</Column>
+								<Column id="userUpdateColumn">
+                    <Text text="{i18n>flowerUpdate}" />
+                  </Column>
+                  <Column id="userCreateColumn">
+                    <Text text="{i18n>flowerCreate}" />
+                  </Column>
 							</columns>
 							<items>
 								<ColumnListItem
@@ -32,10 +38,16 @@
 									</cells>
 									<cells>
 										<Label text="{flowers>name}" />
-									</cells>																
+									</cells>
+									<cells>
+                      <Label text="{flowers>ts_update}" />
+                    </cells>
+                    <cells>
+                      <Label text="{flowers>ts_create}" />
+                    </cells>
 								</ColumnListItem>
 							</items>
-						</Table>	
+						</Table>
 					</content>
 				</Panel>
 			</Page>
