@@ -18,10 +18,10 @@
 									}">
 							<columns>
 								<Column id="idColumn">
-									<Text text="{id}" />
+									<Text text="{i18n>id}" />
 									</Column>
 								<Column id="nameColumn">
-									<Text text="{name}" />
+									<Text text="{i18n>name}" />
 								</Column>
 								<Column id="userUpdateColumn">
                     <Text text="{i18n>flowerUpdate}" />

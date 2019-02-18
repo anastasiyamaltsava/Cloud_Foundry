@@ -8,9 +8,14 @@ sap.ui.define([
         onInit: function () {
 			console.log("controller init");
 		},
+		executeAjax: function(settings) {
+			$.ajax(settings).done(function (response) {
+				console.log(response);
+			});
+		},
 		createFlower: function () {
 			var Name = sap.ui.getCore().byId(this.getView().sId + "--input_name").getValue();
-			console.log(Name);
+			var list = sap.ui.getCore().byId(this.getView().sId + "--flowerList");
 
 			var settings = {
 				"async": true,
@@ -21,20 +26,16 @@ sap.ui.define([
 					"content-type": "application/json"
 				},
 				"processData": false,
-				"data": "{\"name\": \"" + Name  + "\"}"
+				"data": "{\"name\": \"" + Name  + "\"}",
 			};
 
-			$.ajax(settings).done(function (response) {
-				console.log(response);
-			});
+			executeAjax(settings);
 
-			window.location.reload();
+			list.getModel().updateBindings();
 		},
 		updateFlower: function () {
 			var Name = sap.ui.getCore().byId(this.getView().sId + "--input_name").getValue();
 			var Id = sap.ui.getCore().byId(this.getView().sId + "--input_id").getValue();
-
-			console.log(Name);
 
 			var settings = {
 				"async": true,
@@ -48,12 +49,9 @@ sap.ui.define([
 				"data": "{\"name\": \"" + Name  + "\", \"ts_update\": null,  \"ts_create\": null}"
 			};
 
-			$.ajax(settings).done(function (response) {
-				console.log(response);
-			});
+			executeAjax(settings);
 
 			window.location.reload();
-
 		}
      });
 });
