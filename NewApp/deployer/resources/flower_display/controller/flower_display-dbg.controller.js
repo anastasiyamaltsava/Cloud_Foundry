@@ -6,10 +6,11 @@ sap.ui.define([
 
 	return Controller.extend("flower_display.controller.flower_display", {
         onInit: function () {
-			console.log("controller init");			
+			console.log("controller init");
 		},
 		createFlower: function () {
 			var Name = sap.ui.getCore().byId(this.getView().sId + "--input_name").getValue();
+			// var list = sap.ui.getCore().byId(this.getView().sId + "--flowerList");
 			console.log(Name);
 
 			var settings = {
@@ -27,10 +28,14 @@ sap.ui.define([
 			$.ajax(settings).done(function (response) {
 				console.log(response);
 			});
+
+			// list.getModel().updateBindings();
 		},
 		updateFlower: function () {
 			var Name = sap.ui.getCore().byId(this.getView().sId + "--input_name").getValue();
 			var Id = sap.ui.getCore().byId(this.getView().sId + "--input_id").getValue();
+			// var list = sap.ui.getCore().byId(this.getView().sId + "--flowerList");
+
 			console.log(Name);
 
 			var settings = {
@@ -48,6 +53,9 @@ sap.ui.define([
 			$.ajax(settings).done(function (response) {
 				console.log(response);
 			});
+
+			// list.getModel().updateBindings();
+
 		}
      });
 });
