@@ -8,11 +8,6 @@ sap.ui.define([
         onInit: function () {
 			console.log("controller init");
 		},
-		executeAjax: function(settings) {
-			$.ajax(settings).done(function (response) {
-				console.log(response);
-			});
-		},
 		createFlower: function () {
 			var Name = sap.ui.getCore().byId(this.getView().sId + "--input_name").getValue();
 			var list = sap.ui.getCore().byId(this.getView().sId + "--flowerList");
@@ -29,9 +24,11 @@ sap.ui.define([
 				"data": "{\"name\": \"" + Name  + "\"}",
 			};
 
-			executeAjax(settings);
+			$.ajax(settings).done(function (response) {
+				console.log(response);
+			});
 
-			list.getModel().updateBindings();
+			window.location.reload();
 		},
 		updateFlower: function () {
 			var Name = sap.ui.getCore().byId(this.getView().sId + "--input_name").getValue();
@@ -49,7 +46,9 @@ sap.ui.define([
 				"data": "{\"name\": \"" + Name  + "\", \"ts_update\": null,  \"ts_create\": null}"
 			};
 
-			executeAjax(settings);
+			$.ajax(settings).done(function (response) {
+				console.log(response);
+			});
 
 			window.location.reload();
 		}
