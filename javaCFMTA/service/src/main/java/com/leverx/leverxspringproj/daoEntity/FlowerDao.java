@@ -30,7 +30,7 @@ public class FlowerDao implements IFlowerDao {
 		Optional<Flower> entity = null;
 		try (Connection conn = dataSource.getConnection();
 				PreparedStatement stmnt = conn.prepareStatement(
-						"SELECT TOP 1 \"flid\", \"name\" FROM \"javaCFMTA::Flower\" WHERE \"flid\" = ?")) {
+						"SELECT SINGLE \"flid\", \"name\" FROM \"javaCFMTA::Flower\" WHERE \"flid\" = ?")) {
 			stmnt.setLong(1, id);
 			ResultSet result = stmnt.executeQuery();
 			if (result.next()) {

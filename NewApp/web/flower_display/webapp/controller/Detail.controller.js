@@ -58,36 +58,65 @@ sap.ui.define([
 			}
 		},
 		updateFlower: function () {
-			// var oTable = this.getView().byId("shopsList");
-
-			// var oSelectedItem = oTable.getSelectedItem();
 
 			var name = this.getView().byId("namee").getValue();
 
+			console.log(name);
+
 			var oModel = this.getView().getModel("flowers");
+
+			console.log(oModel);
 
 			if (!name) {
 				MessageToast.show("Fill field");
 			} else {
 				var flid = this.getView().byId("flidd").getText();
 
+				console.log(flid);
+
 				var Flower = {};
 				Flower.name = name;
+				Flower.ts_update = null;
+				Flower.ts_create = null;
+
+				console.log(Flower);
 
 				oModel.update("/Flowers('" + flid + "')", Flower, {
 					merge: false,
 					success: function () {
 						jQuery.sap.log.info("Sucsess");
+						MessageToast.show("Updated"); 
 					},
 					error: function () {
 						jQuery.sap.log.error("Error");
 					}
 				});
-				this.onCloseDialog();
 			}
 		},
 		deleteFlower: function () {
+			var oTable = this.getView().byId("shopList");
+			
+			var oSelectedItem = oTable.getSelectedItem();			
 
+			if (!oSelectedItem){
+				MessageToast.show("Line is not selected!");
+			} else {
+				var shid = oSelectedItem.getBindingContext("shops").getProperty("shid");
+
+				jQuery.ajax({
+					type : "DELETE",
+					contentType : "application/json",
+					url : "https://p2001081516trial-trial-dev-service.cfapps.eu10.hana.ondemand.com/xsjs/shop/shop.xsjs?shopid=" + shid,
+					dataType : "json", 
+					success: function(){
+						jQuery.sap.log.info("Sucsess");
+						MessageToast.show("Deleted"); 
+					},
+					error: function () {
+						jQuery.sap.log.error("Error");
+					}	
+				});	
+} 
 		}
 	});
 });

@@ -33,7 +33,7 @@ modules:
      - name: pt_hdi
      - name: pt_dest
      - name: javauaa
-     - name: pt_conn
+    #  - name: pt_conn
 
  - name: router
    type: nodejs
@@ -81,8 +81,8 @@ resources:
      service: html5-apps-repo
    type: org.cloudfoundry.managed-service
 
- - name: pt_conn
-   type: org.cloudfoundry.managed-service
-   parameters:
-     service: connectivity
-     service-plan: lite
+#  - name: pt_conn
+#    type: org.cloudfoundry.managed-service
+#    parameters:
+#      service: connectivity
+#      service-plan: lite

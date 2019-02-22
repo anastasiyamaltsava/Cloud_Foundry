@@ -33,6 +33,7 @@ sap.ui.define([
 				oModel.create("/Flowers", Flower, {
 					success: function(){
 						jQuery.sap.log.info("Sucsess");
+						MessageToast.show("Created"); 
 					},
 					error : function () {
 						jQuery.sap.log.error("Error");
