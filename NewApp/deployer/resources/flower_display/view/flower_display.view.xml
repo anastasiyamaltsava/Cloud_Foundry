@@ -1,38 +1,28 @@
 <mvc:View controllerName="flower_display.controller.flower_display" xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc">
 	<Shell>
 		<App id="home">
-			<Page
-				title="Flower display">
+			<Page title="{i18n>header}">
 				<Panel class="sapUiResponsiveMargin" width="auto">
-					<content>
-					<Label text="{i18n>id}" id="Label1"/>
-					<Input width="100%"  id="input_id" enabled="true"/>
-					<Label text="{i18n>name}" id="Label2"/>
-					<Input width="100%"  id="input_name" enabled="true"/>
-                    <Button text="{i18n>create}" press=".createFlower"></Button>
-					<Button text="{i18n>update}" press=".updateFlower"></Button>
-					</content>
 					<content>
 						<Table id="flowerList" items="{
 										path: 'flowers>/Flowers'
 									}">
 							<columns>
 								<Column id="idColumn">
-									<Text text="{i18n>id}" />
-									</Column>
+									<Text text="{i18n>flowerID}" />
+								</Column>
 								<Column id="nameColumn">
-									<Text text="{i18n>name}" />
+									<Text text="{i18n>flowerName}" />
 								</Column>
 								<Column id="userUpdateColumn">
-                    <Text text="{i18n>flowerUpdate}" />
-                  </Column>
-                  <Column id="userCreateColumn">
-                    <Text text="{i18n>flowerCreate}" />
-                  </Column>
+									<Text text="{i18n>flowerUpdate}" />
+								</Column>
+								<Column id="userCreateColumn">
+									<Text text="{i18n>flowerCreate}" />
+								</Column>
 							</columns>
 							<items>
-								<ColumnListItem
-									id="row">
+								<ColumnListItem type="Navigation" press=".onItemSelected" id="row">
 									<cells>
 										<Label text="{flowers>flid}" />
 									</cells>
@@ -40,15 +30,20 @@
 										<Label text="{flowers>name}" />
 									</cells>
 									<cells>
-                      <Label text="{flowers>ts_update}" />
-                    </cells>
-                    <cells>
-                      <Label text="{flowers>ts_create}" />
-                    </cells>
+										<Label text="{flowers>ts_update}" />
+									</cells>
+									<cells>
+										<Label text="{flowers>ts_create}" />
+									</cells>
 								</ColumnListItem>
 							</items>
 						</Table>
 					</content>
+				</Panel>
+				<Panel class="sapUiResponsiveMargin" width="auto">
+					<Label text="{i18n>Name}" id="Label2" />
+					<Input width="100%" id="input_name" enabled="true" />
+					<Button text="{i18n>create}" press=".createFlower"></Button>
 				</Panel>
 			</Page>
 		</App>

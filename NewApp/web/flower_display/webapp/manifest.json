@@ -80,8 +80,58 @@
 					"useBatch": false,
 					"disableHeadRequestForToken": true
     			}
+			},
+			"shops": {
+				"dataSource": "mainService",
+				"settings": {
+					"defaultBindingMode": "TwoWay",
+					"defaultCountMode": "Inline",
+					"useBatch": false,
+					"disableHeadRequestForToken": true
+    			}
 			}
 		},
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "viewPath": "flower_display.view",
+                "controlId": "home",
+                "controlAggregation": "pages",
+                "transition": "slide",
+                "async": true
+            },
+            "routes": [{
+                    "pattern": "",
+                    "name": "home",
+                    "target": "home"
+                },
+                {
+                    "pattern": "detail",
+                    "name": "detail",
+                    "target": "detail"
+                },
+                {
+                    "pattern": "detail/{invoicePath}",
+                    "name": "detail",
+                    "target": "detail"
+                }
+            ],
+            "targets": {
+                "home": {
+                    "viewId": "home",
+                    "viewName": "flower_display",
+                    "viewLevel": 1
+                },
+                "detail": {
+                    "viewId": "detail",
+                    "viewName": "Detail",
+                    "viewPath": "flower_display.view",
+                    "transition": "show",
+                    "viewLevel": 2
+                }
+            }
+        },
 		"resources": {
 			"css": [{
 				"uri": "css/style.css"

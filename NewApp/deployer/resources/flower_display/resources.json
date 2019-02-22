@@ -12,6 +12,13 @@
             "name": "Component.js"
         },
         {
+            "name": "controller\\Detail-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller\\Detail.controller.js"
+        },
+        {
             "name": "controller\\flower_display-dbg.controller.js",
             "isDebug": true
         },
@@ -26,7 +33,14 @@
             "raw": "i18n\\i18n.properties"
         },
         {
+            "name": "index-dbg.js",
+            "isDebug": true
+        },
+        {
             "name": "index.html"
+        },
+        {
+            "name": "index.js"
         },
         {
             "name": "manifest.json"
@@ -39,6 +53,9 @@
             "name": "tmp\\Component.js"
         },
         {
+            "name": "tmp\\controller\\Detail.controller.js"
+        },
+        {
             "name": "tmp\\controller\\flower_display.controller.js"
         },
         {
@@ -49,7 +66,13 @@
             "name": "tmp\\index.html"
         },
         {
+            "name": "tmp\\index.js"
+        },
+        {
             "name": "tmp\\manifest.json"
+        },
+        {
+            "name": "tmp\\view\\Detail.view.xml"
         },
         {
             "name": "tmp\\view\\flower_display.view.xml"
@@ -58,7 +81,16 @@
             "name": "tmp-dbg\\Component.js"
         },
         {
+            "name": "tmp-dbg\\controller\\Detail.controller.js"
+        },
+        {
             "name": "tmp-dbg\\controller\\flower_display.controller.js"
+        },
+        {
+            "name": "tmp-dbg\\index.js"
+        },
+        {
+            "name": "view\\Detail.view.xml"
         },
         {
             "name": "view\\flower_display.view.xml"

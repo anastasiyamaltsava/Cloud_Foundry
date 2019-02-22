@@ -1,0 +1,60 @@
+<mvc:View controllerName="flower_display.controller.Detail" xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc">
+  <Shell>
+    <App id="detail">
+      <pages>
+        <Page showNavButton="true" navButtonPress=".onNavBack" title="Extra Information">
+          <Panel id="FlowersDetailPanel" headerText="{i18n>flower}" class="sapUiResponsiveMargin" width="auto">
+            <content>
+              <Table id="details">
+                <columns>
+                  <Column id="firstNameColumn">
+                    <Text text="{i18n>flowerID}" />
+                  </Column>
+                  <Column id="lastNameColumn">
+                    <Text text="{i18n>flowerName}" />
+                  </Column>
+                </columns>
+                <items>
+                  <ColumnListItem>
+                    <cells>
+                      <Label id="flidd" text="{flowers>flid}" />
+                    </cells>
+                    <cells>
+                      <Input id="namee" value="{flowers>name}" />
+                    </cells>
+                  </ColumnListItem>
+                </items>
+              </Table>
+              <Button text="{i18n>update}" press=".updateFlower"></Button>
+            </content>
+          </Panel>
+          <Panel headerText="{i18n>shops}" class="sapUiResponsiveMargin" width="auto">
+            <content>
+              <Table id="shopList" items="{/Shops}">
+                <columns>
+                  <Column id="shid">
+                    <Text text="{i18n>shopID}" />
+                  </Column>
+                  <Column id="name">
+                    <Text text="{i18n>shopName}" />
+                  </Column>
+                </columns>
+                <items>
+                  <ColumnListItem>
+                    <cells>
+                      <Label/>
+                    </cells>
+                    <cells>
+                      <Label/>
+                    </cells>
+                  </ColumnListItem>
+                </items>
+              </Table>
+              <Button text="{i18n>delete}" press=".deleteFlower"></Button>
+            </content>
+          </Panel>
+        </Page>
+      </pages>
+    </App>
+  </Shell>
+</mvc:View>

@@ -1,56 +1,44 @@
 sap.ui.define([
 	"sap/ui/core/mvc/Controller",
-	"sap/ui/model/json/JSONModel"
-], function (Controller, JSONModel) {
+	"sap/ui/core/UIComponent",
+	"sap/m/MessageToast",
+], function (Controller, UIComponent, MessageToast) {
 	"use strict";
 
 	return Controller.extend("flower_display.controller.flower_display", {
         onInit: function () {
-			console.log("controller init");
+			jQuery.sap.log.debug("controller init"); 
+		},
+		getRouter : function () {
+			return UIComponent.getRouterFor(this);
+		},
+		onItemSelected: function(oEvent) {
+			var oSelectedItem = oEvent.getSource();
+			var context = encodeURIComponent(oSelectedItem.getBindingContext('flowers').getPath());
+			console.log(context);
+			this.getRouter().navTo("detail",  {invoicePath: context});
 		},
 		createFlower: function () {
-			var Name = sap.ui.getCore().byId(this.getView().sId + "--input_name").getValue();
-			var list = sap.ui.getCore().byId(this.getView().sId + "--flowerList");
+			var name = this.getView().byId("input_name").getValue();			
 
-			var settings = {
-				"async": true,
-				"crossDomain": true,
-				"url": "https://p2001081516trial-trial-dev-service.cfapps.eu10.hana.ondemand.com/xsodata/NewApp.xsodata/Flowers",
-				"method": "POST",
-				"headers": {
-					"content-type": "application/json"
-				},
-				"processData": false,
-				"data": "{\"name\": \"" + Name  + "\"}",
-			};
+			var oModel = this.getView().getModel("flowers");
 
-			$.ajax(settings).done(function (response) {
-				console.log(response);
-			});
+			if (!name){
+				MessageToast.show("Fill field");	
+			} else {
 
-			window.location.reload();
-		},
-		updateFlower: function () {
-			var Name = sap.ui.getCore().byId(this.getView().sId + "--input_name").getValue();
-			var Id = sap.ui.getCore().byId(this.getView().sId + "--input_id").getValue();
+				var Flower = {};
+				Flower.name = name;
 
-			var settings = {
-				"async": true,
-				"crossDomain": true,
-				"url": "https://p2001081516trial-trial-dev-service.cfapps.eu10.hana.ondemand.com/xsodata/NewApp.xsodata/Flowers('" + Id + "')",
-				"method": "PUT",
-				"headers": {
-					"content-type": "application/json"
-				},
-				"processData": false,
-				"data": "{\"name\": \"" + Name  + "\", \"ts_update\": null,  \"ts_create\": null}"
-			};
-
-			$.ajax(settings).done(function (response) {
-				console.log(response);
-			});
-
-			window.location.reload();
+				oModel.create("/Flowers", Flower, {
+					success: function(){
+						jQuery.sap.log.info("Sucsess");
+					},
+					error : function () {
+						jQuery.sap.log.error("Error");
+					}
+				});
+			}	
 		}
      });
 });
