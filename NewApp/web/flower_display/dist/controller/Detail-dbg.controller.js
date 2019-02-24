@@ -1,121 +1,122 @@
 sap.ui.define([
-	"sap/ui/core/mvc/Controller",
-	"sap/ui/core/routing/History"
-], function (Controller, History) {
-	"use strict";
-	return Controller.extend("flower_display.controller.Detail", {
-		onInit: function () {
-			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-			oRouter.getRoute("detail").attachPatternMatched(this._onObjectMatched, this);
-		},
-		_onObjectMatched: function (oEvent) {
+  "flower_display/controller/flower_display.controller",
+  "sap/ui/core/routing/History",
+  "sap/m/MessageToast"
+], function(Controller, History, MessageToast) {
+  "use strict";
 
-			this.getView().bindElement({
-				path: decodeURIComponent(oEvent.getParameter("arguments").invoicePath),
-				model: "flowers"
-			});
+  return Controller.extend("flower_display.controller.Detail", {
+    onInit: function() {
 
-			var flid = this.getView().byId("flidd").getText();
-			var filters = new Array();
-			var filterByName = new sap.ui.model.Filter("flid", sap.ui.model.FilterOperator.Contains, flid)
-			filters.push(filterByName);
-			
-			var oModel = this.getView().getModel("shops");
+      var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+      oRouter.getRoute("detail").attachPatternMatched(this._onObjectMatched, this);
+    },
+    showShops: function() {
+      var data = this.getView().getModel("data");
+      var filters = new Array();
+      var filterByName = new sap.ui.model.Filter("flid", sap.ui.model.FilterOperator.Contains, data.flowerID)
+      filters.push(filterByName);
 
-			var oTable = this.byId("shopList");
+      console.log(data.flowerID);
 
-			oModel.read("/Shops", {
-				filters: filters,
-				success: function (oData) {
-				
-					if(oData.results.length != 0)
-					var oTemplate = new sap.m.ColumnListItem({
-						cells: [new sap.m.Text({
-							text: "{shid}"
-						}), new sap.m.Text({
-							text: "{name}"
-						})]
-					});
+      var oModel = this.getView().getModel("shops");
 
-					oTable.setModel(oModel);
-					oTable.bindAggregation("items", {
-						path: "/Shops",
-						template: oTemplate
-					});
-				}
-			});
-		},
-		onNavBack: function () {
-			var oHistory, sPreviousHash;
+      var oTable = this.byId("shopList");
 
-			oHistory = History.getInstance();
-			sPreviousHash = oHistory.getPreviousHash();
+      oModel.read("/Shops", {
+        filters: filters,
+        success: function(oData) {
+          console.log(oData);
+          var oTableJSON = new sap.ui.model.json.JSONModel();
+          var Data = {
+            Table: oData.results,
+          };
+          oTableJSON.setData(Data);
+          oTable.setModel(oTableJSON, "Data");
+        }
+      });
+    },
+    _onObjectMatched: function(oEvent) {
 
-			if (sPreviousHash !== undefined) {
-				window.history.go(-1);
-			} else {
-				this.getRouter().navTo("home", {}, true);
-			}
-		},
-		updateFlower: function () {
+      this.getView().bindElement({
+        path: decodeURIComponent(oEvent.getParameter("arguments").invoicePath),
+        model: "flowers"
+      });
 
-			var name = this.getView().byId("namee").getValue();
+      this.showShops();
+    },
+    onNavBack: function() {
+      var data = this.getView().getModel("data");
+      var name = this.getView().byId("flowerName");
 
-			console.log(name);
+      if (!name.getValue() || name.getValue() !== data.flowerName) {
+        name.setValue(data.flowerName);
+      }
 
-			var oModel = this.getView().getModel("flowers");
+      var oHistory, sPreviousHash;
 
-			console.log(oModel);
+      oHistory = History.getInstance();
+      sPreviousHash = oHistory.getPreviousHash();
 
-			if (!name) {
-				MessageToast.show("Fill field");
-			} else {
-				var flid = this.getView().byId("flidd").getText();
+      if (sPreviousHash !== undefined) {
+        window.history.go(-1);
+      } else {
+        this.getRouter().navTo("home", {}, true);
+      }
+    },
+    updateFlower: function() {
 
-				console.log(flid);
+      var name = this.getView().byId("flowerName");
+      var data = this.getView().getModel("data");
+      var oModel = this.getView().getModel("flowers");
 
-				var Flower = {};
-				Flower.name = name;
-				Flower.ts_update = null;
-				Flower.ts_create = null;
+      if (!name.getValue()) {
+        MessageToast.show("Field can't be empty");
+        name.setValue(data.flowerName);
+      } else {
 
-				console.log(Flower);
+        var Flower = {};
+        Flower.name = name.getValue();
+        Flower.ts_update = null;
+        Flower.ts_create = null;
 
-				oModel.update("/Flowers('" + flid + "')", Flower, {
-					merge: false,
-					success: function () {
-						jQuery.sap.log.info("Sucsess");
-						MessageToast.show("Updated"); 
-					},
-					error: function () {
-						jQuery.sap.log.error("Error");
-					}
-				});
-			}
-		},
-		deleteFlower: function () {
-			var oTable = this.getView().byId("shopList");
-			
-			var oSelectedItem = oTable.getSelectedItem();			
+        oModel.update("/Flowers('" + data.flowerID + "')", Flower, {
+          merge: false,
+          success: function() {
+            jQuery.sap.log.info("Sucsess");
+            MessageToast.show("Updated");
+          },
+          error: function() {
+            jQuery.sap.log.error("Error");
+          }
+        });
+      }
+    },
+    deleteFlower: function() {
+      var oModel = this.getView().getModel("shops");
+      var oTable = this.getView().byId("shopList");
+      var oSelectedItem = oTable.getSelectedItem();
 
-			if (!oSelectedItem){
-				MessageToast.show("Phone is not selected!");
-			} else {
-				var phid = oSelectedItem.getBindingContext("phones").getProperty("phid");
+      if (!oSelectedItem) {
+        MessageToast.show("Line is not selected!");
+      } else {
+        var id = oSelectedItem.mAggregations.cells[0].mProperties.text;
 
-				jQuery.ajax({
-					type : "DELETE",
-					contentType : "application/json",
-					url : "https://p2001081134trial-maksimzhytkevich-space1-service.cfapps.eu10.hana.ondemand.com/xsjs/phone/phone.xsjs?phoneid=" + phid,
-					dataType : "json", 
-					success: function(){
-						jQuery.sap.log.info("Sucsess");
-					},
-					error: function () {
-						jQuery.sap.log.error("Error");
-					}	
-				});	
-} 
-		}
-	});
+        jQuery.ajax({
+          type: "DELETE",
+          contentType: "application/json",
+          url: "https://p2001081516trial-trial-dev-service.cfapps.eu10.hana.ondemand.com/xsjs/shop/shop.xsjs?id=" + id,
+          dataType: "json",
+          success: function() {
+            jQuery.sap.log.info("Sucsess");
+            MessageToast.show("Deleted");
+          },
+          error: function() {
+            jQuery.sap.log.error("Error");
+          }
+        });
+      }
+      this.showShops();
+    }
+  });
 });

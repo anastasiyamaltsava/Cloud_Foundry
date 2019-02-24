@@ -46,6 +46,9 @@
             "name": "manifest.json"
         },
         {
+            "name": "model\\data.json"
+        },
+        {
             "name": "tmp\\Component-preload.js",
             "merged": true
         },
@@ -70,6 +73,9 @@
         },
         {
             "name": "tmp\\manifest.json"
+        },
+        {
+            "name": "tmp\\model\\data.json"
         },
         {
             "name": "tmp\\view\\Detail.view.xml"

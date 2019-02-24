@@ -2,8 +2,8 @@ var shop = function (connection) {
 
     const SHOP_TABLE = "NewApp::ExtraInfo.Shops";
 
-    this.doDelete = function (shid) {
-        const statement = createPreparedDeleteStatement(SHOP_TABLE, {shid: shid});
+    this.doDelete = function (id) {
+        const statement = createPreparedDeleteStatement(SHOP_TABLE, {id: id});
         connection.executeUpdate(statement.sql, statement.aValues);
 
         connection.commit();

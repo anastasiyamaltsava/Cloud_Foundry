@@ -2,7 +2,6 @@ namespace NewApp;
 
 using NewApp::ExtraInfo.Shops;
 
-
 entity Flower {
     @Comment: 'Id of Flower'
     key flid : String(4);

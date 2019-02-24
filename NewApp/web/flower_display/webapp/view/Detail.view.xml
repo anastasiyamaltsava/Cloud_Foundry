@@ -8,19 +8,19 @@
               <Table id="details">
                 <columns>
                   <Column id="firstNameColumn">
-                    <Text text="{i18n>flowerID}" />
+                    <Text text="{i18n>flowerID}"/>
                   </Column>
                   <Column id="lastNameColumn">
-                    <Text text="{i18n>flowerName}" />
+                    <Text text="{i18n>flowerName}"/>
                   </Column>
                 </columns>
                 <items>
                   <ColumnListItem>
                     <cells>
-                      <Label id="flidd" text="{flowers>flid}" />
+                      <Label id="flowerID" text="{flowers>flid}"/>
                     </cells>
                     <cells>
-                      <Input id="namee" value="{flowers>name}" />
+                      <Input id="flowerName" value="{flowers>name}"/>
                     </cells>
                   </ColumnListItem>
                 </items>
@@ -30,22 +30,34 @@
           </Panel>
           <Panel headerText="{i18n>shops}" class="sapUiResponsiveMargin" width="auto">
             <content>
-              <Table id="shopList" items="{/Shops}">
+              <Table id="shopList" mode="SingleSelect" items="{Data>/Table}">
                 <columns>
+                  <Column id="id">
+                    <Text text="{i18n>ID}"/>
+                  </Column>
                   <Column id="shid">
-                    <Text text="{i18n>shopID}" />
+                    <Text text="{i18n>shopID}"/>
                   </Column>
                   <Column id="name">
-                    <Text text="{i18n>shopName}" />
+                    <Text text="{i18n>shopName}"/>
+                  </Column>
+                  <Column id="description">
+                    <Text text="{i18n>description}"/>
                   </Column>
                 </columns>
                 <items>
                   <ColumnListItem>
                     <cells>
-                      <Label/>
+                      <Text text="{Data>id}"/>
                     </cells>
                     <cells>
-                      <Label/>
+                      <Text text="{Data>shid}"/>
+                    </cells>
+                    <cells>
+                      <Text text="{Data>name}"/>
+                    </cells>
+                    <cells>
+                      <Text text="{Data>description}"/>
                     </cells>
                   </ColumnListItem>
                 </items>

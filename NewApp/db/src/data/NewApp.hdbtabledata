@@ -26,9 +26,11 @@
       },
       "import_settings": {
         "import_columns": [
+          "id",
 					"shid",
           "flid",
-          "name"
+          "name",
+          "description"
         ]
       }
     }

@@ -8,7 +8,7 @@ const shopLib = new Shoplib($.hdb.getConnection({
         try {
             switch ($.request.method) {
                 case $.net.http.DEL : {
-                    shopLib.doDelete($.request.parameters.get("shopid"));
+                    shopLib.doDelete($.request.parameters.get("id"));
                     break;
                 }
                 default: {
