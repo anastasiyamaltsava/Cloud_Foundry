@@ -12,13 +12,10 @@ sap.ui.define([
       oRouter.getRoute("detail").attachPatternMatched(this._onObjectMatched, this);
     },
     showShops: function() {
-      console.log("shopShow");
       var data = this.getView().getModel("data");
       var filters = new Array();
       var filterByName = new sap.ui.model.Filter("flid", sap.ui.model.FilterOperator.Contains, data.flowerID)
       filters.push(filterByName);
-
-      console.log(data.flowerID);
 
       var oModel = this.getView().getModel("shops");
 
@@ -27,7 +24,6 @@ sap.ui.define([
       oModel.read("/Shops", {
         filters: filters,
         success: function(oData) {
-          console.log(oData);
           var oTableJSON = new sap.ui.model.json.JSONModel();
           var Data = {
             Table: oData.results,

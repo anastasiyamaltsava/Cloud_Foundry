@@ -1,5 +1,6 @@
 package com.leverx.leverxspringproj.service;
 
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional; 
 
@@ -19,13 +20,17 @@ public class FlowerService {
 		return FlowerDao.getAll();
 	}
 	
-	public Flower getFlower(Long id) {
+	public Flower getFlower(String id) {
 		Optional<Flower> FlowerOptional = this.FlowerDao.getById(id);
 		Flower Flower = null;
 		if(FlowerOptional.isPresent()) {
 			Flower = FlowerOptional.get();
 		}
 		return Flower;
+	}
+	public Flower getFlowerShop(String id) throws SQLException {
+	
+		return FlowerDao.getShops(id);
 	}
 	
 	public void createFlower(Flower Flower) {
@@ -36,7 +41,7 @@ public class FlowerService {
 		this.FlowerDao.update(Flower);
 	}
 	
-	public void deleteFlower(Long id) {
+	public void deleteFlower(String id) {
 		this.FlowerDao.delete(id);
 	}
 	

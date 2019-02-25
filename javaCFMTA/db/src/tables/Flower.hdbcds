@@ -4,9 +4,13 @@ using javaCFMTA::ExtraInfo.Shops;
 
 entity Flower {
     @Comment: 'Id of Flower'
-    key flid :  Integer64 generated always as identity ( start with 1 increment by 1 );
-    @Comment: 'Name of flower'
+    key flid : String(4);
+    @Comment: 'Description'
     name : String(100);
+    @Comment: 'Update time'
+    ts_update : UTCDateTime;
+    @Comment: 'Create time'
+    ts_create : UTCDateTime;
 
     toShops : Association[*] to Shops on toShops.flid = flid;
 };

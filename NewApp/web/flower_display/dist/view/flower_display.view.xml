@@ -22,7 +22,7 @@
 								</Column>
 							</columns>
 							<items>
-								<ColumnListItem type="Navigation" tap=".onItemSelected" id="row">
+								<ColumnListItem type="Navigation" tap=".onItemSelected">
 									<cells>
 										<Label text="{flowers>flid}"/>
 									</cells>
@@ -42,7 +42,7 @@
 				</Panel>
 				<Panel class="sapUiResponsiveMargin" width="auto">
 					<Label text="{i18n>Name}"/>
-					<Input width="100%" id="input_name" value="{data>/createName}"/>
+					<Input width="100%" value="{data>/createName}"/>
 					<Button text="{i18n>create}" press=".createFlower"></Button>
 				</Panel>
 			</Page>

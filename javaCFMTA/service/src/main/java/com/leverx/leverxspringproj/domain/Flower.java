@@ -1,16 +1,28 @@
 package com.leverx.leverxspringproj.domain;
 
+import java.util.List;
+
 public class Flower {
 	
-	private long flid;
+	private String flid;
 	
 	private String name;
 	
+	public List<Shop> shopList;
+	
+	public List<Shop> getShopList() {
+		return shopList;
+	}
+
+	public void setShopList(List<Shop> shopList) {
+		this.shopList = shopList;
+	}
+
 	public String getName() {
 		return name;
 	}
 	
-	public long getUsid() {
+	public String getFlid() {
 		return flid;
 	}
 
@@ -18,8 +30,8 @@ public class Flower {
 		this.name = name;
 	}
 	
-	public void setUsid(long usid) {
-		this.flid = usid;
+	public void setFlid(String id) {
+		this.flid = id;
 	}
 	
 }

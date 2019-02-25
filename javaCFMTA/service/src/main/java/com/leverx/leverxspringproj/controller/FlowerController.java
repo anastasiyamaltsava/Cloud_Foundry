@@ -1,5 +1,6 @@
 package com.leverx.leverxspringproj.controller;
 
+import java.sql.SQLException;
 import java.util.List; 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +26,13 @@ public class FlowerController {
 		return FlowerService.getFlowerAll(); 
 	}    
 	
+	@GetMapping(value="/FlowersShops/{id}")
+	public Flower getFlowerShops(@PathVariable String id) throws SQLException {
+		return FlowerService.getFlowerShop(id);
+}
+	
 	@GetMapping(value="/Flower/{flid}")  
-	public Flower getFlower(@PathVariable Long flid) {
+	public Flower getFlower(@PathVariable String flid) {
 		return FlowerService.getFlower(flid);
 	}    
 	
@@ -36,7 +42,7 @@ public class FlowerController {
 	}    
 	
 	@DeleteMapping(value="/Flower/{flid}")  
-	public void deleteFlower(@PathVariable Long flid) {
+	public void deleteFlower(@PathVariable String flid) {
 		FlowerService.deleteFlower(flid);  
 	}    
 	

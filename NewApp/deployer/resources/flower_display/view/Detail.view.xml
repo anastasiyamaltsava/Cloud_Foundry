@@ -7,17 +7,17 @@
             <content>
               <Table id="details">
                 <columns>
-                  <Column id="firstNameColumn">
+                  <Column>
                     <Text text="{i18n>flowerID}"/>
                   </Column>
-                  <Column id="lastNameColumn">
+                  <Column>
                     <Text text="{i18n>flowerName}"/>
                   </Column>
                 </columns>
                 <items>
                   <ColumnListItem>
                     <cells>
-                      <Label id="flowerID" text="{flowers>flid}"/>
+                      <Label text="{flowers>flid}"/>
                     </cells>
                     <cells>
                       <Input id="flowerName" value="{flowers>name}"/>
@@ -32,16 +32,16 @@
             <content>
               <Table id="shopList" mode="SingleSelect" items="{Data>/Table}">
                 <columns>
-                  <Column id="id">
+                  <Column>
                     <Text text="{i18n>ID}"/>
                   </Column>
-                  <Column id="shid">
+                  <Column>
                     <Text text="{i18n>shopID}"/>
                   </Column>
-                  <Column id="name">
+                  <Column>
                     <Text text="{i18n>shopName}"/>
                   </Column>
-                  <Column id="description">
+                  <Column>
                     <Text text="{i18n>description}"/>
                   </Column>
                 </columns>

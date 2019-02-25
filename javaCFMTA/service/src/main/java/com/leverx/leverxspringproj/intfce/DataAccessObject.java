@@ -1,4 +1,4 @@
-package com.leverx.leverxspringproj.dao.intfce;
+package com.leverx.leverxspringproj.intfce;
 
 import java.sql.SQLException;
 import java.util.List;
