@@ -12,6 +12,7 @@ sap.ui.define([
       oRouter.getRoute("detail").attachPatternMatched(this._onObjectMatched, this);
     },
     showShops: function() {
+      console.log("shopShow");
       var data = this.getView().getModel("data");
       var filters = new Array();
       var filterByName = new sap.ui.model.Filter("flid", sap.ui.model.FilterOperator.Contains, data.flowerID)
@@ -85,6 +86,7 @@ sap.ui.define([
           success: function() {
             jQuery.sap.log.info("Sucsess");
             MessageToast.show("Updated");
+            data.flowerName = name.getValue();
           },
           error: function() {
             jQuery.sap.log.error("Error");
@@ -110,13 +112,15 @@ sap.ui.define([
           success: function() {
             jQuery.sap.log.info("Sucsess");
             MessageToast.show("Deleted");
+
           },
           error: function() {
             jQuery.sap.log.error("Error");
           }
         });
+          this.showShops();
       }
-      this.showShops();
+
     }
   });
 });
