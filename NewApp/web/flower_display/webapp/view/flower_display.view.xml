@@ -9,31 +9,31 @@
 									}">
 							<columns>
 								<Column>
-									<Text text="{i18n>flowerID}"/>
+									<Text text="{i18n>flowerID}" />
 								</Column>
 								<Column>
-									<Text text="{i18n>flowerName}"/>
+									<Text text="{i18n>flowerName}" />
 								</Column>
 								<Column>
-									<Text text="{i18n>flowerUpdate}"/>
+									<Text text="{i18n>flowerUpdate}" />
 								</Column>
 								<Column>
-									<Text text="{i18n>flowerCreate}"/>
+									<Text text="{i18n>flowerCreate}" />
 								</Column>
 							</columns>
 							<items>
 								<ColumnListItem type="Navigation" tap=".onItemSelected">
 									<cells>
-										<Label text="{flowers>flid}"/>
+										<Label text="{flowers>flid}" />
 									</cells>
 									<cells>
-										<Label text="{flowers>name}"/>
+										<Label text="{flowers>name}" />
 									</cells>
 									<cells>
-										<Label text="{flowers>ts_update}"/>
+										<Label text="{flowers>ts_update}" />
 									</cells>
 									<cells>
-										<Label text="{flowers>ts_create}"/>
+										<Label text="{flowers>ts_create}" />
 									</cells>
 								</ColumnListItem>
 							</items>
@@ -41,8 +41,8 @@
 					</content>
 				</Panel>
 				<Panel class="sapUiResponsiveMargin" width="auto">
-					<Label text="{i18n>Name}"/>
-					<Input width="100%" value="{data>/createName}"/>
+					<Label text="{i18n>Name}" />
+					<Input width="100%" value="{data>/createName}" />
 					<Button text="{i18n>create}" press=".createFlower"></Button>
 				</Panel>
 			</Page>

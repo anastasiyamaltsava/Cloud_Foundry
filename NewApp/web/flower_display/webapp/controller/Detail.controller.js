@@ -2,16 +2,16 @@ sap.ui.define([
   "flower_display/controller/flower_display.controller",
   "sap/ui/core/routing/History",
   "sap/m/MessageToast"
-], function(Controller, History, MessageToast) {
+], function (Controller, History, MessageToast) {
   "use strict";
 
   return Controller.extend("flower_display.controller.Detail", {
-    onInit: function() {
+    onInit: function () {
 
       var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
       oRouter.getRoute("detail").attachPatternMatched(this._onObjectMatched, this);
     },
-    showShops: function() {
+    showShops: function () {
       var data = this.getView().getModel("data");
       var filters = new Array();
       var filterByName = new sap.ui.model.Filter("flid", sap.ui.model.FilterOperator.Contains, data.flowerID)
@@ -23,7 +23,7 @@ sap.ui.define([
 
       oModel.read("/Shops", {
         filters: filters,
-        success: function(oData) {
+        success: function (oData) {
           var oTableJSON = new sap.ui.model.json.JSONModel();
           var Data = {
             Table: oData.results,
@@ -33,7 +33,7 @@ sap.ui.define([
         }
       });
     },
-    _onObjectMatched: function(oEvent) {
+    _onObjectMatched: function (oEvent) {
 
       this.getView().bindElement({
         path: decodeURIComponent(oEvent.getParameter("arguments").invoicePath),
@@ -42,7 +42,7 @@ sap.ui.define([
 
       this.showShops();
     },
-    onNavBack: function() {
+    onNavBack: function () {
       var data = this.getView().getModel("data");
       var name = this.getView().byId("flowerName");
 
@@ -61,7 +61,7 @@ sap.ui.define([
         this.getRouter().navTo("home", {}, true);
       }
     },
-    updateFlower: function() {
+    updateFlower: function () {
 
       var name = this.getView().byId("flowerName");
       var data = this.getView().getModel("data");
@@ -79,18 +79,18 @@ sap.ui.define([
 
         oModel.update("/Flowers('" + data.flowerID + "')", Flower, {
           merge: false,
-          success: function() {
+          success: function () {
             jQuery.sap.log.info("Sucsess");
             MessageToast.show("Updated");
             data.flowerName = name.getValue();
           },
-          error: function() {
+          error: function () {
             jQuery.sap.log.error("Error");
           }
         });
       }
     },
-    deleteFlower: function() {
+    deleteFlower: function () {
       var oModel = this.getView().getModel("shops");
       var oTable = this.getView().byId("shopList");
       var oSelectedItem = oTable.getSelectedItem();
@@ -105,16 +105,16 @@ sap.ui.define([
           contentType: "application/json",
           url: "https://p2001081516trial-trial-dev-service.cfapps.eu10.hana.ondemand.com/xsjs/shop/shop.xsjs?id=" + id,
           dataType: "json",
-          success: function() {
+          success: function () {
             jQuery.sap.log.info("Sucsess");
             MessageToast.show("Deleted");
 
           },
-          error: function() {
+          error: function () {
             jQuery.sap.log.error("Error");
           }
         });
-          this.showShops();
+        this.showShops();
       }
 
     }

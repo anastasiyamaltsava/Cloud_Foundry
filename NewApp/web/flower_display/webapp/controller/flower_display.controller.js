@@ -2,30 +2,30 @@ sap.ui.define([
   "sap/ui/core/mvc/Controller",
   "sap/ui/core/UIComponent",
   "sap/m/MessageToast"
-], function(Controller, UIComponent, MessageToast) {
+], function (Controller, UIComponent, MessageToast) {
   "use strict";
 
   return Controller.extend("flower_display.controller.flower_display", {
-    onInit: function() {
+    onInit: function () {
       jQuery.sap.log.debug("controller init");
     },
-    getRouter: function() {
+    getRouter: function () {
       return UIComponent.getRouterFor(this);
     },
-    onItemSelected: function(oEvent) {
+    onItemSelected: function (oEvent) {
       var oSelectedItem = oEvent.getSource();
       var context = encodeURIComponent(oSelectedItem.getBindingContext('flowers').getPath());
       this.getRouter().navTo("detail", {
         invoicePath: context
       });
 
-			var data = this.getView().getModel("data");
+      var data = this.getView().getModel("data");
 
-			data.flowerID = oEvent.getSource().mAggregations.cells[0].mProperties.text;
-			data.flowerName = oEvent.getSource().mAggregations.cells[1].mProperties.text;
+      data.flowerID = oEvent.getSource().mAggregations.cells[0].mProperties.text;
+      data.flowerName = oEvent.getSource().mAggregations.cells[1].mProperties.text;
 
     },
-    createFlower: function() {
+    createFlower: function () {
       var data = this.getView().getModel("data");
 
       var name = data.oData.createName;
@@ -40,11 +40,11 @@ sap.ui.define([
         Flower.name = name;
 
         oModel.create("/Flowers", Flower, {
-          success: function() {
+          success: function () {
             jQuery.sap.log.info("Sucsess");
             MessageToast.show("Created");
           },
-          error: function() {
+          error: function () {
             jQuery.sap.log.error("Error");
           }
         });

@@ -8,19 +8,19 @@
               <Table id="details">
                 <columns>
                   <Column>
-                    <Text text="{i18n>flowerID}"/>
+                    <Text text="{i18n>flowerID}" />
                   </Column>
                   <Column>
-                    <Text text="{i18n>flowerName}"/>
+                    <Text text="{i18n>flowerName}" />
                   </Column>
                 </columns>
                 <items>
                   <ColumnListItem>
                     <cells>
-                      <Label text="{flowers>flid}"/>
+                      <Label text="{flowers>flid}" />
                     </cells>
                     <cells>
-                      <Input id="flowerName" value="{flowers>name}"/>
+                      <Input id="flowerName" value="{flowers>name}" />
                     </cells>
                   </ColumnListItem>
                 </items>
@@ -33,31 +33,31 @@
               <Table id="shopList" mode="SingleSelect" items="{Data>/Table}">
                 <columns>
                   <Column>
-                    <Text text="{i18n>ID}"/>
+                    <Text text="{i18n>ID}" />
                   </Column>
                   <Column>
-                    <Text text="{i18n>shopID}"/>
+                    <Text text="{i18n>shopID}" />
                   </Column>
                   <Column>
-                    <Text text="{i18n>shopName}"/>
+                    <Text text="{i18n>shopName}" />
                   </Column>
                   <Column>
-                    <Text text="{i18n>description}"/>
+                    <Text text="{i18n>description}" />
                   </Column>
                 </columns>
                 <items>
                   <ColumnListItem>
                     <cells>
-                      <Text text="{Data>id}"/>
+                      <Text text="{Data>id}" />
                     </cells>
                     <cells>
-                      <Text text="{Data>shid}"/>
+                      <Text text="{Data>shid}" />
                     </cells>
                     <cells>
-                      <Text text="{Data>name}"/>
+                      <Text text="{Data>name}" />
                     </cells>
                     <cells>
-                      <Text text="{Data>description}"/>
+                      <Text text="{Data>description}" />
                     </cells>
                   </ColumnListItem>
                 </items>

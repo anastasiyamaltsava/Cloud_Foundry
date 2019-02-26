@@ -1,9 +1,9 @@
 sap.ui.require([
   "sap/ui/model/resource/ResourceModel",
   "sap/ui/core/ComponentContainer"
-], function(ResourceModel, ComponentContainer) {
+], function (ResourceModel, ComponentContainer) {
   "use strict";
-  sap.ui.getCore().attachInit(function() {
+  sap.ui.getCore().attachInit(function () {
     new sap.m.Shell({
       app: new sap.ui.core.ComponentContainer({
         height: "100%",
