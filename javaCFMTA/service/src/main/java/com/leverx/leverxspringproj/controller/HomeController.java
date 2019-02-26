@@ -16,8 +16,12 @@ import com.leverx.leverxspringproj.service.CloudService;
 import com.leverx.leverxspringproj.service.SecurityService;
 
 @Controller public class HomeController {    
-	@Autowired  private CloudService cloudService;  
-	@Autowired  private SecurityService securityService; 
+	@Autowired
+	private CloudService cloudService; 
+	
+	@Autowired
+	private SecurityService securityService; 
+	
 	@RequestMapping(value="/", method=RequestMethod.GET)  
 	public String getHome(Model model) {   
 		Map<String, JsonElement> vcap = cloudService.getNameSpace();
